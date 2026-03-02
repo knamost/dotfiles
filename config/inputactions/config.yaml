@@ -1,0 +1,83 @@
+
+touchpad:
+  gestures:
+
+
+    # maximize window / global
+    - type: swipe
+      fingers: 3
+      direction: up
+
+      actions:
+        - on: end
+          plasma_shortcut: kwin,Window Maximize
+
+    # minimize window / global
+    - type: pinch
+      fingers: 3
+      direction: in
+
+      actions:
+        - on: end
+          plasma_shortcut: kwin,Window Minimize
+
+
+    # close window / global
+    - type: pinch
+      fingers: 4
+      direction: in
+
+      actions:
+        - on: begin
+          plasma_shortcut: kwin,Window Close
+
+
+
+    ## Switch window
+    # Swipe slow - Switch window
+    #S wipe fast - Open alt+tab switcher
+    - type: swipe
+      fingers: 3
+      direction: left_right
+      speed: slow
+
+      actions:
+        - on: begin
+          input:
+            - keyboard: [ +leftalt, tab ]
+
+        - on: update
+          interval: -80
+          input:
+            - keyboard: [ leftshift+tab ]
+
+        - on: update
+          interval: 80
+          input:
+            - keyboard: [ tab ]
+
+        - on: end_cancel
+          input:
+            - keyboard: [ -leftalt ]
+
+    # Quick window switching (left)
+    - type: swipe
+      fingers: 3
+      direction: left
+      speed: fast
+
+      actions:
+        - on: begin
+          input:
+            - keyboard: [ leftalt+leftshift+tab ]
+
+    # Quick window switching (right)
+    - type: swipe
+      fingers: 3
+      direction: right
+      speed: fast
+
+      actions:
+        - on: begin
+          input:
+            - keyboard: [ leftalt+tab ]
