@@ -1,5 +1,8 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
+right_format = "$time$battery"
+add_newline = true
+
 [aws]
 symbol = " "
 
@@ -8,6 +11,49 @@ symbol = " "
 
 [bun]
 symbol = " "
+
+[battery]
+full_symbol        = "󰁹 "
+charging_symbol    = "󰂄 "
+discharging_symbol = "󰂃 "
+unknown_symbol     = "󰁽 "
+empty_symbol       = "󰂎 "
+disabled = false
+format = "[$symbol$percentage]($style) "
+
+[[battery.display]]
+threshold = 10
+style = "bold red"
+charging_symbol = "󰢜 "
+discharging_symbol = "󰂎 "
+
+[[battery.display]]
+threshold = 30
+style = "bold yellow"
+charging_symbol = "󰂆 "
+discharging_symbol = "󰂃 "
+
+[[battery.display]]
+threshold = 80
+style = "bold blue"
+charging_symbol = "󰂈 "
+discharging_symbol = "󰂁 "
+
+[[battery.display]]
+threshold = 100
+style = "bold green"
+charging_symbol = "󰂄 "
+discharging_symbol = "󰁹 "
+
+[character]
+format = "$symbol "
+success_symbol = "[❯](bold green)"
+error_symbol = "[❯](bold red)"
+vimcmd_symbol = "[❮](bold green)"
+vimcmd_visual_symbol = "[❮](bold yellow)"
+vimcmd_replace_symbol = "[❮](bold purple)"
+vimcmd_replace_one_symbol = "[❮](bold purple)"
+disabled = false
 
 [c]
 symbol = " "
@@ -31,10 +77,39 @@ symbol = " "
 symbol = " "
 
 [directory]
+truncation_length = 3
+truncate_to_repo = true
+fish_style_pwd_dir_length = 0
+use_logical_path = true
+format = "[$path]($style)[$read_only]($read_only_style) "
+repo_root_format = "[$before_root_path]($before_repo_root_style)[$repo_root]($repo_root_style)[$path]($style)[$read_only]($read_only_style) "
+style = "cyan bold"
+disabled = false
 read_only = " 󰌾"
+read_only_style = "red"
+truncation_symbol = ""
+home_symbol = "~"
+use_os_path_sep = true
+
+[directory.substitutions]
+
 
 [docker_context]
 symbol = " "
+style = "blue bold"
+format = "via [$symbol$context]($style) "
+only_with_files = true
+disabled = false
+detect_extensions = []
+detect_files = [
+    "compose.yml",
+    "compose.yaml",
+    "docker-compose.yml",
+    "docker-compose.yaml",
+    "Dockerfile",
+]
+detect_folders = []
+
 
 [elixir]
 symbol = " "
@@ -56,9 +131,69 @@ symbol = " "
 
 [git_branch]
 symbol = " "
+format = "on [$symbol$branch(:$remote_branch)]($style) "
+style = "bold purple"
+#style = "fg:#1d99f3 bold"   # bold blue
+truncation_length = 9223372036854775807
+truncation_symbol = "…"
+only_attached = false
+always_show_remote = false
+ignore_branches = []
+ignore_bare_repo = false
+disabled = false
+
 
 [git_commit]
 tag_symbol = '  '
+commit_hash_length = 7
+format = '[\($hash$tag\)]($style) '
+style = "green bold"
+only_detached = true
+disabled = false
+tag_disabled = true
+tag_max_candidates = 0
+
+[git_metrics]
+added_style = "bold green"
+deleted_style = "bold red"
+only_nonzero_diffs = true
+format = "([+$added]($added_style) )([-$deleted]($deleted_style) )"
+ignore_submodules = true
+disabled = true
+
+[git_state]
+rebase = "REBASING"
+merge = "MERGING"
+revert = "REVERTING"
+cherry_pick = "CHERRY-PICKING"
+bisect = "BISECTING"
+am = "AM"
+am_or_rebase = "AM/REBASE"
+style = "bold yellow"
+format = '\([$state( $progress_current/$progress_total)]($style)\) '
+disabled = false
+
+[git_status]
+format = '([\[$all_status$ahead_behind\]]($style) )'
+style = "red bold"
+stashed = '\$'
+#stashed = "󰏗 "
+ahead = "⇡"
+behind = "⇣"
+up_to_date = ""
+diverged = "⇕"
+conflicted = "="
+#conflicted = "󰩌 "
+deleted = "✘"
+renamed = "»"
+#renamed = "󰑕 "
+modified = "!"
+staged = "+"
+untracked = "?"
+typechanged = ""
+ignore_submodules = false
+disabled = false
+use_git_executable = false
 
 [golang]
 symbol = " "
@@ -79,7 +214,14 @@ symbol = " "
 symbol = " "
 
 [hostname]
+ssh_only = true
 ssh_symbol = " "
+trim_at = "."
+detect_env_vars = []
+format = "[$ssh_symbol$hostname]($style) in "
+style = "green dimmed bold"
+disabled = false
+
 
 [java]
 symbol = " "
@@ -88,13 +230,51 @@ symbol = " "
 symbol = " "
 
 [kotlin]
+format = "via [$symbol($version )]($style)"
+version_format = "v${raw}"
 symbol = " "
+style = "bold blue"
+kotlin_binary = "kotlin"
+disabled = false
+detect_extensions = [
+    "kt",
+    "kts",
+]
+detect_files = []
+detect_folders = []
+
+[kubernetes]
+symbol = "☸ "
+format = '[$symbol$context( \($namespace\))]($style) in '
+style = "cyan bold"
+disabled = true
+detect_extensions = []
+detect_files = []
+detect_folders = []
+detect_env_vars = []
+contexts = []
+
+[kubernetes.context_aliases]
+
+[kubernetes.user_aliases]
+
 
 [lua]
+format = "via [$symbol($version )]($style)"
+version_format = "v${raw}"
 symbol = " "
+style = "bold blue"
+lua_binary = "lua"
+disabled = false
+detect_extensions = ["lua"]
+detect_files = [".lua-version"]
+detect_folders = ["lua"]
 
 [memory_usage]
+threshold = 85
 symbol = "󰍛 "
+disabled = true
+
 
 [meson]
 symbol = "󰔷 "
@@ -106,10 +286,40 @@ symbol = "󰆥 "
 symbol = " "
 
 [nodejs]
+format = "via [$symbol($version )]($style)"
+version_format = "v${raw}"
 symbol = " "
+style = "bold green"
+disabled = false
+not_capable_style = "bold red"
+detect_extensions = [
+    "js",
+    "mjs",
+    "cjs",
+    "ts",
+    "mts",
+    "cts",
+]
+detect_files = [
+    "package.json",
+    ".node-version",
+    ".nvmrc",
+    "!bunfig.toml",
+    "!bun.lock",
+    "!bun.lockb",
+]
+detect_folders = ["node_modules"]
+
+
+
 
 [ocaml]
 symbol = " "
+
+[os]
+format = "[$symbol]($style)"
+style = "bold white"
+disabled = true
 
 [os.symbols]
 Alpaquita = " "
@@ -160,7 +370,12 @@ Void = " "
 Windows = "󰍲 "
 
 [package]
+format = "is [$symbol$version]($style) "
 symbol = "󰏗 "
+style = "208 bold"
+display_private = false
+disabled = false
+version_format = "v${raw}"
 
 [perl]
 symbol = " "
@@ -175,7 +390,34 @@ symbol = " "
 symbol = "󰏗 "
 
 [python]
+style = "fg:#1d99f3 bold"
 symbol = " "
+pyenv_version_name = false
+pyenv_prefix = "pyenv "
+python_binary = [
+    ["python"],
+    ["python3"],
+    ["python2"],
+]
+format = 'via [${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+version_format = "v${raw}"
+detect_extensions = [
+    "py",
+    "ipynb",
+]
+detect_files = [
+    "requirements.txt",
+    ".python-version",
+    "pyproject.toml",
+    "Pipfile",
+    "tox.ini",
+    "setup.py",
+    "__init__.py",
+]
+detect_folders = []
+detect_env_vars = ["VIRTUAL_ENV"]
+disabled = false
+
 
 [rlang]
 symbol = "󰟔 "
@@ -192,15 +434,22 @@ symbol = " "
 [status]
 symbol = " "
 
+[sudo]
+format = "[as $symbol]($style)"
+symbol = "󰦄 "
+style = "bold blue"
+allow_windows = false
+disabled = true
+
 [swift]
 symbol = " "
 
-[xmake]
-symbol = " "
-
-[zig]
-symbol = " "
-
+[time]
+disabled = false
+format = "[$time]($style) "
+style = "bold yellow"
+use_12hr = false
+time_format = "%H:%M"
 
 [username]
 detect_env_vars = []
@@ -210,55 +459,22 @@ style_user = "yellow bold"
 show_always = false
 disabled = false
 
-[sudo]
-format = "[as $symbol]($style)"
-symbol = "󰦄 "
-style = "bold blue"
-allow_windows = false
-disabled = true
+[username.aliases]
+
+[xmake]
+symbol = " "
+
+[zig]
+symbol = " "
 
 
-[battery]
-full_symbol        = "󰁹 "
-charging_symbol    = "󰂄 "
-discharging_symbol = "󰂃 "
-unknown_symbol     = "󰁽 "
-empty_symbol       = "󰂎 "
-disabled = false
-format = "[$symbol$percentage]($style) "
-
-[[battery.display]]
-threshold = 10
-style = "bold red"
-charging_symbol = "󰢜 "
-discharging_symbol = "󰂎 "
-
-[[battery.display]]
-threshold = 30
-style = "bold yellow"
-charging_symbol = "󰂆 "
-discharging_symbol = "󰂃 "
-
-[[battery.display]]
-threshold = 80
-style = "bold blue"
-charging_symbol = "󰂈 "
-discharging_symbol = "󰂁 "
-
-[[battery.display]]
-threshold = 100
-style = "bold green"
-charging_symbol = "󰂄 "
-discharging_symbol = "󰁹 "
-
-[character]
-format = "$symbol "
-success_symbol = "[❯](bold green)"
-error_symbol = "[❯](bold red)"
-vimcmd_symbol = "[❮](bold green)"
-vimcmd_visual_symbol = "[❮](bold yellow)"
-vimcmd_replace_symbol = "[❮](bold purple)"
-vimcmd_replace_one_symbol = "[❮](bold purple)"
-disabled = false
 
 [custom]
+
+
+[cmd_duration]
+min_time = 500
+format = "took [$duration]($style) "
+style = "yellow bold"
+show_milliseconds = false
+disabled = false
