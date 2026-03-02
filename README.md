@@ -7,5 +7,5 @@ My most up to date dotfiles
 ## Terminal
 **Kitty terminal**
 
-## Packages
+## tools to use inside terminal
 **for list tools i'm using its currently inside tools file**
