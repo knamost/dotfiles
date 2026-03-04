@@ -1,0 +1,11 @@
+include /usr/share/nano/*.nanorc
+include ~/.nano/mylang.nanorc
+
+set linenumbers
+set softwrap
+set tabsize 4
+set autoindent
+set mouse
+
+
+

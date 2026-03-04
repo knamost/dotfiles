@@ -149,11 +149,14 @@ TIMEFMT=$'\nreal\t%E\nuser\t%U\nsys\t%S\ncpu\t%P'
 # ---------------------------------------------------------------
 # Plugins (Arch paths)
 # ---------------------------------------------------------------
+
+# zsh autosuggestion
 if [ -f /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
     source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
     ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=244'
 fi
 
+# zsh syntax highlighting
 if [ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
     source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
     ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
@@ -203,6 +206,12 @@ fi
 # Enable command-not-found if installed
 if [ -f /usr/share/doc/pkgfile/command-not-found.zsh ]; then
     source /usr/share/doc/pkgfile/command-not-found.zsh
+fi
+
+
+# WakaTime terminal tracking
+if [ -f ~/.zsh/plugins/wakatime-zsh-plugin/wakatime.plugin.zsh ]; then
+    source ~/.zsh/plugins/wakatime-zsh-plugin/wakatime.plugin.zsh
 fi
 
 # ---------------------------------------------------------------
@@ -257,3 +266,18 @@ esac
 # Local env (Rust/cargo/etc)
 # ---------------------------------------------------------------
 . "$HOME/.local/bin/env"
+
+
+# ---------------------------------------------------------------
+# Plugins (Arch paths)
+# ---------------------------------------------------------------
+
+# WakaTime terminal tracking
+if [ -f ~/.zsh/plugins/wakatime-zsh-plugin/wakatime.plugin.zsh ]; then
+    source ~/.zsh/plugins/wakatime-zsh-plugin/wakatime.plugin.zsh
+fi
+
+
+
+# Aliases
+[ -f ~/.zsh_aliases ] && source ~/.zsh_aliases

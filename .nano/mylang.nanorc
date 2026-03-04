@@ -1,0 +1,21 @@
+
+syntax "mylang" "\.mlg$"
+
+# Keywords
+color brightblue "if|else|while|return|for|function|break|continue"
+
+# Comments
+color green "#.*"
+
+# Strings (single and double quotes)
+color yellow "\".*?\""
+color yellow "'.*?'"
+
+# Numbers (integers and floats)
+color magenta "\b[0-9]+(\.[0-9]+)?\b"
+
+# Operators
+color cyan "[+\-*/%=<>!&|]"
+
+# Function names (words followed by a parenthesis)
+color brightblue "\b[a-zA-Z_][a-zA-Z0-9_]*\s*(?=\()"
