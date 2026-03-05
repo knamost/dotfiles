@@ -178,12 +178,6 @@ if [ -f /usr/share/doc/pkgfile/command-not-found.zsh ]; then
     source /usr/share/doc/pkgfile/command-not-found.zsh
 fi
 
-# WakaTime terminal tracking
-if [ -f ~/.zsh/plugins/wakatime-zsh-plugin/wakatime.plugin.zsh ]; then
-    source ~/.zsh/plugins/wakatime-zsh-plugin/wakatime.plugin.zsh
-fi
-
-
 # ---------------------------------------------------------------
 # Starship prompp
 # ---------------------------------------------------------------
@@ -250,3 +244,5 @@ export LESS_TERMCAP_ue=$'\e[0m'
 
 # Aliases
 [ -f ~/.zsh_aliases ] && source ~/.zsh_aliases
+
+
