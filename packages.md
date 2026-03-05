@@ -25,6 +25,12 @@ yazi
 zoxide
 
 
+# Fonts
+ttf-jetbrains-mono-nerd
+ttf-firacode-nerd
+ttf-hack-nerd
+ttf-meslo-nerd
+ttf-cascadia-code-nerd
 
 
 # Others
