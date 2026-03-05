@@ -108,28 +108,6 @@ if [ -x /usr/bin/dircolors ]; then
     zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 fi
 
-# ---------------------------------------------------------------
-# Aliases — navigation & ls
-# ---------------------------------------------------------------
-alias ll='ls -l'
-alias la='ls -A'
-alias l='ls -F'
-alias ..='cd ..'
-alias ...='cd ../..'
-alias eza='eza --icons'
-
-# ---------------------------------------------------------------
-# bat, eza, lazygit aliases
-# ---------------------------------------------------------------
-#alias cat='bat --style=auto'
-alias ls='eza --icons --group-directories-first'
-alias ll='eza --icons --group-directories-first -l'
-alias la='eza --icons --group-directories-first -la'
-alias lt='eza --icons --tree --level=2'
-alias lg='lazygit'
-
-#		eza colors
-export EZA_COLORS="di=38;5;39"			#blue colors 
 
 
 # ---------------------------------------------------------------
@@ -235,16 +213,6 @@ eval "$(fnm env --use-on-cd)"
 # delta for git diffs
 # ---------------------------------------------------------------
 export GIT_PAGER='delta'
-
-
-
-# ---------------------------------------------------------------
-# Virtual machine aliases
-# ---------------------------------------------------------------
-alias kali-linux='quickemu --vm ~/Documents/virtual-machines/Kali-linux/kali-current.conf'
-alias ms2='(cd ~/Documents/virtual-machines/metasploitable && ./run-ms2.sh &> /dev/null & disown)'
-alias win7='quickemu --vm ~/Documents/virtual-machines/windows/windows-7.conf'
-alias win10='quickemu --vm ~/Documents/virtual-machines/windows/windows-10.conf'
 
 # ---------------------------------------------------------------
 # pnpm

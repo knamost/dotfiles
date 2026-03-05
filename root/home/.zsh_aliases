@@ -15,7 +15,71 @@ alias gd='git diff'
 alias home='cd ~'
 #alias dotfiles='cd ~/.config'
 
+# ---------------------------------------------------------------
+# Aliases — navigation & ls
+# ---------------------------------------------------------------
+alias ll='ls -l'
+alias la='ls -A'
+alias l='ls -F'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias eza='eza --icons'
+
+# ---------------------------------------------------------------
+# bat, eza, lazygit aliases
+# ---------------------------------------------------------------
+#alias cat='bat --style=auto'
+alias ls='eza --icons --group-directories-first'
+alias ll='eza --icons --group-directories-first -l'
+alias la='eza --icons --group-directories-first -la'
+alias lt='eza --icons --tree --level=2'
+alias lg='lazygit'
+
+#		eza colors
+export EZA_COLORS="di=38;5;39"			#blue colors 
+
+
+# Better cd - shows contents after cd
+function cd() { builtin cd "$@" && ls; }
+
+# Quick extract for any archive
+function extract() {
+  case $1 in
+    *.tar.bz2) tar xjf $1 ;;
+    *.tar.gz)  tar xzf $1 ;;
+    *.zip)     unzip $1 ;;
+    *.7z)      7z x $1 ;;
+    *.rar)     unrar x $1 ;;
+    *)         echo "Unknown format: $1" ;;
+  esac
+}
+
+# Make directory and cd into it
+function mkcd() { mkdir -p "$1" && cd "$1"; }
+
+
 # Misc
 alias ports='ss -tulpn'
 alias myip='curl ifconfig.me'
 alias reload='source ~/.zshrc'
+
+
+# usefull aliases
+alias df='df -h'                  # readable disk usage
+alias du='du -h'                  # readable file sizes
+alias free='free -h'              # readable memory
+alias ports='ss -tulnp'           # show open ports
+alias myip='curl ifconfig.me'     # public IP
+alias update='sudo pacman -Syu'   # quick update
+alias cls='clear'
+
+
+
+
+# ---------------------------------------------------------------
+# Virtual machine aliases
+# ---------------------------------------------------------------
+alias kali-linux='quickemu --vm ~/Documents/virtual-machines/Kali-linux/kali-current.conf'
+alias ms2='(cd ~/Documents/virtual-machines/metasploitable && ./run-ms2.sh &> /dev/null & disown)'
+alias win7='quickemu --vm ~/Documents/virtual-machines/windows/windows-7.conf'
+alias win10='quickemu --vm ~/Documents/virtual-machines/windows/windows-10.conf'
