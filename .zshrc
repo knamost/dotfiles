@@ -25,6 +25,7 @@ export EDITOR=nvim
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
+
 # ---------------------------------------------------------------
 # History
 # ---------------------------------------------------------------
@@ -86,6 +87,7 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 # ---------------------------------------------------------------
 # Colors & aliases for core tools
 # ---------------------------------------------------------------
+
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     export LS_COLORS="$LS_COLORS:ow=30;44:"  # fix ls color for folders with 777 permissions
@@ -99,17 +101,7 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
     alias diff='diff --color=auto'
     alias ip='ip --color=auto'
-	
 
-
-    # Make man pages and less output colorful
-    export LESS_TERMCAP_mb=$'\E[1;31m'     # begin blink
-    export LESS_TERMCAP_md=$'\E[1;36m'     # begin bold
-    export LESS_TERMCAP_me=$'\E[0m'        # reset bold/blink
-    export LESS_TERMCAP_so=$'\E[01;33m'    # begin reverse video
-    export LESS_TERMCAP_se=$'\E[0m'        # reset reverse video
-    export LESS_TERMCAP_us=$'\E[1;32m'     # begin underline
-    export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
 
     # Use LS_COLORS for completion as well
     zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
@@ -208,11 +200,11 @@ if [ -f /usr/share/doc/pkgfile/command-not-found.zsh ]; then
     source /usr/share/doc/pkgfile/command-not-found.zsh
 fi
 
-
 # WakaTime terminal tracking
 if [ -f ~/.zsh/plugins/wakatime-zsh-plugin/wakatime.plugin.zsh ]; then
     source ~/.zsh/plugins/wakatime-zsh-plugin/wakatime.plugin.zsh
 fi
+
 
 # ---------------------------------------------------------------
 # Starship prompp
@@ -237,6 +229,7 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 # fnm (Node version manager)
 # ---------------------------------------------------------------
 eval "$(fnm env --use-on-cd)"
+
 
 # ---------------------------------------------------------------
 # delta for git diffs
@@ -267,16 +260,24 @@ esac
 # ---------------------------------------------------------------
 . "$HOME/.local/bin/env"
 
+#----------------------------------------------------------------
 
-# ---------------------------------------------------------------
-# Plugins (Arch paths)
-# ---------------------------------------------------------------
+# Proper colorful man pages (kitty safe)
+export MANPAGER="less -R"
+export PAGER="less -R"
+export MANROFFOPT="-P -c"
+export GROFF_NO_SGR=0
 
-# WakaTime terminal tracking
-if [ -f ~/.zsh/plugins/wakatime-zsh-plugin/wakatime.plugin.zsh ]; then
-    source ~/.zsh/plugins/wakatime-zsh-plugin/wakatime.plugin.zsh
-fi
+# Better ANSI handling
+export LESS='-R --use-color -Dd+r$Du+b'
 
+export LESS_TERMCAP_mb=$'\e[1;31m'
+export LESS_TERMCAP_md=$'\e[1;36m'
+export LESS_TERMCAP_me=$'\e[0m'
+export LESS_TERMCAP_so=$'\e[1;33m'
+export LESS_TERMCAP_se=$'\e[0m'
+export LESS_TERMCAP_us=$'\e[1;32m'
+export LESS_TERMCAP_ue=$'\e[0m'
 
 
 # Aliases
