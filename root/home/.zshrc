@@ -246,3 +246,6 @@ export LESS_TERMCAP_ue=$'\e[0m'
 [ -f ~/.zsh_aliases ] && source ~/.zsh_aliases
 
 
+
+# opencode
+export PATH=/home/deicide/.opencode/bin:$PATH

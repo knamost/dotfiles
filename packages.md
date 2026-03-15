@@ -1,5 +1,10 @@
+# Terminal
+kitty
+ghosty
 
 
+
+# packages
 bat
 
 delta
