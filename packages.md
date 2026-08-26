@@ -3,6 +3,11 @@ kitty
 ghosty
 
 
+# Repo
+
+[Chaotic-AUR](https://aur.chaotic.cx/)
+
+
 
 # packages
 bat
