@@ -16,6 +16,7 @@ delta
 
 eza
 
+fastfetch
 fzf
 fd
 
