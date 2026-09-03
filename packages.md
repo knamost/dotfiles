@@ -1,5 +1,6 @@
 # Terminal
 kitty
+
 ghosty
 
 
@@ -10,37 +11,55 @@ ghosty
 
 
 # packages
+
 bat
 
 delta
 
+
 eza
 
+
 fastfetch
+
 fzf
+
 fd
+
 
 glow
 
+
 ncdu
+
 
 rigrep('rg') 
 
+
 tldr
+
 tree
+
 
 wl-copy
 
+
 yazi
+
 
 zoxide
 
 
 # Fonts
+
 ttf-jetbrains-mono-nerd
+
 ttf-firacode-nerd
+
 ttf-hack-nerd
+
 ttf-meslo-nerd
+
 ttf-cascadia-code-nerd
 
 
