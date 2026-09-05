@@ -1,0 +1,11 @@
+[Unit]
+Description=Symlink Vesktop flatpak discord-ipc socket for native apps
+After=graphical-session.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/ln -sf %t/.flatpak/dev.vencord.Vesktop/xdg-run/discord-ipc-0 %t/discord-ipc-0
+RemainAfterExit=yes
+
+[Install]
+WantedBy=graphical-session.target
