@@ -11,9 +11,9 @@ alias gp='git push'
 alias gl='git lg'
 alias gd='git diff'
 
-# Navigation
+# Navigation ( zoxide )
 alias home='cd ~'
-#alias dotfiles='cd ~/.config'
+#alias cd='z'
 
 # ---------------------------------------------------------------
 # Aliases — navigation & ls
@@ -26,7 +26,7 @@ alias ...='cd ../..'
 alias eza='eza --icons'
 
 # ---------------------------------------------------------------
-# bat, eza, lazygit aliases
+# bat, eza, lazygit, ripgrep aliases
 # ---------------------------------------------------------------
 #alias cat='bat --style=auto'
 alias ls='eza --icons --group-directories-first'
@@ -34,6 +34,9 @@ alias ll='eza --icons --group-directories-first -l'
 alias la='eza --icons --group-directories-first -la'
 alias lt='eza --icons --tree --level=2'
 alias lg='lazygit'
+
+# alias find='fd'
+# alias grep='rg'
 
 #		eza colors
 export EZA_COLORS="di=38;5;39"			#blue colors 
@@ -58,9 +61,15 @@ function extract() {
 function mkcd() { mkdir -p "$1" && cd "$1"; }
 
 
+# Kitty terminal aliases
+alias kitty-restore='kitty --detach --session ~/.config/kitty/last_session.conf'
+
+
+# Clears screen AND scrollback
+alias clear='clear && printf "\033[3J"'
+
+
 # Misc
-alias ports='ss -tulpn'
-alias myip='curl ifconfig.me'
 alias reload='source ~/.zshrc'
 
 
@@ -79,7 +88,7 @@ alias cls='clear'
 # ---------------------------------------------------------------
 # Virtual machine aliases
 # ---------------------------------------------------------------
-alias kali-linux='quickemu --vm ~/Documents/virtual-machines/Kali-linux/kali-current.conf'
-alias ms2='(cd ~/Documents/virtual-machines/metasploitable && ./run-ms2.sh &> /dev/null & disown)'
-alias win7='quickemu --vm ~/Documents/virtual-machines/windows/windows-7.conf'
-alias win10='quickemu --vm ~/Documents/virtual-machines/windows/windows-10.conf'
+alias kali-linux='quickemu --vm ~/virtual-machines/Kali-linux/kali-current.conf'
+alias ms2='(cd ~/virtual-machines/metasploitable && ./run-ms2.sh &> /dev/null & disown)'
+alias win7='quickemu --vm ~/virtual-machines/windows/windows-7.conf'
+alias win10='quickemu --vm ~/virtual-machines/windows/windows-10.conf'
