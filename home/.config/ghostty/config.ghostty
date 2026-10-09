@@ -1,0 +1,96 @@
+# ---------------------------------------------------------------
+# Font
+# ---------------------------------------------------------------
+font-family = JetBrainsMono Nerd Font
+font-size = 12
+font-feature = +liga
+font-feature = +calt
+font-feature = +dlig
+
+# ---------------------------------------------------------------
+# Appearance
+# ---------------------------------------------------------------
+theme = Gruvbox Dark Hard
+background-opacity = 0.70
+unfocused-split-opacity = 0.7
+split-divider-color = #45475a
+cursor-style = block
+cursor-style-blink = true
+
+# ---------------------------------------------------------------
+# Window
+# ---------------------------------------------------------------
+window-padding-x = 8
+window-padding-y = 8
+window-decoration = false
+
+# ---------------------------------------------------------------
+# Scrollback
+# ---------------------------------------------------------------
+scrollback-limit = 100000
+
+# ---------------------------------------------------------------
+# Shell integration
+# ---------------------------------------------------------------
+shell-integration = zsh
+shell-integration-features = cursor,sudo,title
+
+# ---------------------------------------------------------------
+# Quick terminal (dropdown)
+# ---------------------------------------------------------------
+quick-terminal-position = top
+quick-terminal-size = 70%
+quick-terminal-autohide = true
+
+# ---------------------------------------------------------------
+# Splits - disabled, handled by tmux instead
+# # ---------------------------------------------------------------
+#keybind = ctrl+shift+d=new_split:right
+#keybind = ctrl+shift+s=new_split:down
+#keybind = ctrl+shift+h=goto_split:left
+#keybind = ctrl+shift+l=goto_split:right
+#keybind = ctrl+shift+k=goto_split:top
+#keybind = ctrl+shift+j=goto_split:bottom
+#keybind = ctrl+shift+z=toggle_split_zoom
+
+# ---------------------------------------------------------------
+# Tabs - disabled, handled by tmux
+# ---------------------------------------------------------------
+#keybind = ctrl+shift+t=new_tab
+#keybind = ctrl+shift+w=close_surface
+#keybind = ctrl+shift+right=next_tab
+#keybind = ctrl+shift+left=previous_tab
+#keybind = ctrl+shift+1=goto_tab:1
+#keybind = ctrl+shift+2=goto_tab:2
+#keybind = ctrl+shift+3=goto_tab:3
+#keybind = ctrl+shift+4=goto_tab:4
+#keybind = ctrl+shift+5=goto_tab:5
+
+# ---------------------------------------------------------------
+# Font size
+# ---------------------------------------------------------------
+keybind = ctrl+equal=increase_font_size:1
+keybind = ctrl+minus=decrease_font_size:1
+keybind = ctrl+0=reset_font_size
+
+# ---------------------------------------------------------------
+# Scrollback
+# ---------------------------------------------------------------
+keybind = ctrl+shift+up=scroll_page_up
+keybind = ctrl+shift+down=scroll_page_down
+
+
+
+
+# ---------------------------------------------------------------
+# Misc
+# ---------------------------------------------------------------
+keybind = ctrl+shift+r=reload_config
+copy-on-select = false
+mouse-hide-while-typing = true
+gtk-single-instance = false
+
+
+
+
+
