@@ -246,6 +246,12 @@ export LESS_TERMCAP_ue=$'\e[0m'
 [ -f ~/.zsh_aliases ] && source ~/.zsh_aliases
 
 
-
 # opencode
 export PATH=/home/deicide/.opencode/bin:$PATH
+  # append completions to fpath
+fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
+  # initialise completions with ZSH's compinit
+autoload -Uz compinit && compinit
+
+# spicetify
+export PATH=$PATH:/home/deicide/.spicetify
